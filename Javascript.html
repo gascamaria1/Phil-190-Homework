@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="Javascript_fun.js"></script>
+    <title>Javascript</title>
+    <style type="text/css">
+    body {
+        font-size: 1.6em;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .show {
+        display: inline !important;
+    }
+    
+    button {
+        border: 2px solid black;
+        background: #E5E4E2;
+        font-size: .5em;
+        font-weight: bold;
+        color: black;
+        padding: .8em 2em;
+        margin-top: .4em;
+    }
+    </style>
+</head>
+
+<body>
+    <p id="sayAge"></p>
+    <script>
+    var yourAge = prompt("What is your age?");
+
+    if (yourAge != null) {
+        document.getElementById("sayAge").innerHTML = "Your age is " + yourAge;
+    } else {
+        alert("Please enter an age next time");
+    }
+
+    var age = 1;
+
+    switch (age) {
+
+        case 8:
+        case 9:
+            document.write("You are on team 1" + "<br />");
+            break;
+
+        case 6:
+            document.write("You are too young to be on a team" + "<br />");
+            break;
+
+        default:
+            document.write("Please try again next year" + "<br />");
+    }
+
+
+
+    for (m = 1; m <= 10; m++) {
+
+        if ((m % 2) === 0) {
+            continue;
+        }
+
+        if (m === 9) {
+            break;
+        }
+        document.write(m + "<br />");
+    }
+
+    function inArray(arrayToCheck, value) {
+        for (i = 0; i < arrayToCheck.length; i++) {
+            if (arrayToCheck[i] === value) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    var randArray = [7, 8, 9, 10, 11];
+
+    document.write("In Array :", inArray(randArray, 8), "<br />");
+
+    var marGasca = ["Maria Gasca", "Cognitive Science", 22];
+
+    document.write("Name: ", marGasca[0], "<br />");
+
+    marGasca[3] = "mgasca@ucmerced.edu";
+
+    marGasca.splice(2, 1, "Patterson", "California");
+
+    marGasca.splice(4, 1);
+
+    document.write("Information: ", marGasca.valueOf(), "<br />");
+
+    document.write("Information: ", marGasca.join(", "), "<br />");
+
+    function Customer(name, age, city, state, balance) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+        this.state = state;
+        this.balance = balance;
+        this.paydownBal = function(amtPaid) {
+            this.balance -= amtPaid;
+        };
+        this.addToBal = function(amtCharged) {
+            this.balance += amtCharged;
+        };
+    }
+
+    var cust2 = new Customer("Maria Gasca", 22, "Patterson", "California", 0.00);
+
+    cust2.addToBal(100.00);
+
+    Customer.prototype.isCreditAvail = true;
+
+    Customer.prototype.toString = function() {
+        return this.name + " is " + this.age + " years old" + " and lives in " + this.city + " " + this.state + " and has a balance of $" + this.balance.toFixed(2) + " " + "Creditworthy: " + this.isCreditAvail;
+    };
+
+    document.write(cust2.toString());
+    </script>
+</body>
+
+</html>
